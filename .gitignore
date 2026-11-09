@@ -1,0 +1,23 @@
+# Secretos y configuración local
+.env
+# Archivos privados / datos reales
+database/import/*.xlsx
+database/import/*.xls
+backups/
+*.sql.gz
+*.bak
+# Logs y temporales
+*.log
+*.tmp
+# Entorno
+vendor/
+.idea/
+.vscode/
+Thumbs.db
+desktop.ini
+# Material fuente del proyecto (contiene datos institucionales)
+*.pdf
+*.docx
+/*.xlsx
+/base_de_datos.md
+/nolfy_luz.md

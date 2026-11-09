@@ -1,0 +1,6 @@
+.git
+.env
+backups
+database/import/*.xlsx
+*.xlsx
+*.md.bak

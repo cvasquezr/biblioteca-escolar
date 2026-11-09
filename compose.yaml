@@ -1,0 +1,39 @@
+services:
+  app:
+    build: .
+    container_name: biblioteca_app
+    ports:
+      - "${APP_PORT:-8080}:80"
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:18-alpine
+    container_name: biblioteca_db
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+      TZ: America/Bogota
+    volumes:
+      - biblioteca_datos:/var/lib/postgresql
+      - ./database/sql:/scripts:ro
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_DATABASE}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+    # El puerto de PostgreSQL NO se publica al host (solo lo ve la app).
+
+volumes:
+  biblioteca_datos:
