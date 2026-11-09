@@ -38,7 +38,7 @@ function abortarPagina(int $codigo, string $mensaje, ?string $detalle = null): n
     echo '<!doctype html><html lang="es"><head><meta charset="utf-8">'
         . '<meta name="viewport" content="width=device-width, initial-scale=1">'
         . '<title>' . e($titulo) . '</title>'
-        . '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">'
+        . '<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">'
         . '</head><body class="bg-light"><div class="container py-5 col-md-7 col-lg-5">'
         . '<div class="card shadow-sm"><div class="card-body text-center p-5">'
         . '<h1 class="h3 mb-3">' . e($titulo) . '</h1><p class="text-muted">' . e($mensaje) . '</p>';

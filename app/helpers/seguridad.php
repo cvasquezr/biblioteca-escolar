@@ -17,9 +17,9 @@ function enviarCabecerasSeguridad(): void
     header('X-Content-Type-Options: nosniff');
     header('Referrer-Policy: same-origin');
     header("Content-Security-Policy: default-src 'self'; "
-        . "style-src 'self' https://cdn.jsdelivr.net; "
-        . "script-src 'self' https://cdn.jsdelivr.net; "
-        . "font-src 'self' https://cdn.jsdelivr.net; "
+        . "style-src 'self'; "
+        . "script-src 'self'; "
+        . "font-src 'self'; "
         . "img-src 'self' data:; form-action 'self'; frame-ancestors 'none'; base-uri 'self'");
     header('Cache-Control: no-store');
 }

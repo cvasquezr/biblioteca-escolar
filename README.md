@@ -2,10 +2,10 @@
 
 Aplicación web para organizar una biblioteca escolar: inventario de libros y ejemplares, lectores,
 préstamos, devoluciones e informes. **PHP 8.5 puro** (sin frameworks), **PostgreSQL 18**, Apache,
-Docker Compose, Bootstrap 5 por CDN y JavaScript nativo. Sin Node.js ni compilación.
+Docker Compose, Bootstrap 5 (copia local en `public/vendor`) y JavaScript nativo. Sin Node.js ni compilación.
 
 ## Requisitos
-Docker Desktop (con Docker Compose) y Git. Se necesita internet para cargar Bootstrap desde el CDN.
+Docker Desktop (con Docker Compose) y Git.
 
 ## Instalación (PowerShell)
 ```powershell
