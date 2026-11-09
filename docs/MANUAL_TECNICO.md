@@ -22,7 +22,7 @@ docker compose exec -T db pg_restore -U biblioteca -d biblioteca_escolar --no-ow
 La carpeta `backups/` está en `.gitignore`. Guarde copias fuera del equipo.
 
 ## Git
-Repositorio local en la rama `main`. No hay remoto configurado y no se ha hecho `push`. Los Excel, `.env` y backups están ignorados.
+Rama principal: `master`. Remoto: https://github.com/cvasquezr/biblioteca-escolar (público). Los Excel, `.env` y backups están ignorados.
 
 ## Cuenta de prueba local
 Durante el desarrollo se creó `admin@ejemplo.com` solo para la base local. **Cree su propio administrador y desactive esa cuenta** antes de usar el sistema en serio.
