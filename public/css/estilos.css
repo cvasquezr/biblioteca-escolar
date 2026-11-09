@@ -1,0 +1,175 @@
+/* Estilos propios del Sistema de Gestión de Biblioteca Escolar */
+:root {
+    --bib-azul: #1d4ed8;
+    --bib-azul-oscuro: #1e3a8a;
+    --bib-azul-claro: #eff4ff;
+    --bib-fondo: #f4f6fa;
+    --bib-borde: #e3e8f0;
+    --bs-primary: #1d4ed8;
+    --bs-primary-rgb: 29, 78, 216;
+    --bs-link-color: #1d4ed8;
+    --bs-link-hover-color: #1e3a8a;
+}
+
+body {
+    background: var(--bib-fondo);
+    color: #1f2937;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--bib-azul);
+    --bs-btn-border-color: var(--bib-azul);
+    --bs-btn-hover-bg: var(--bib-azul-oscuro);
+    --bs-btn-hover-border-color: var(--bib-azul-oscuro);
+    --bs-btn-active-bg: var(--bib-azul-oscuro);
+    --bs-btn-active-border-color: var(--bib-azul-oscuro);
+    --bs-btn-disabled-bg: var(--bib-azul);
+    --bs-btn-disabled-border-color: var(--bib-azul);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--bib-azul);
+    --bs-btn-border-color: var(--bib-azul);
+    --bs-btn-hover-bg: var(--bib-azul);
+    --bs-btn-hover-border-color: var(--bib-azul);
+    --bs-btn-active-bg: var(--bib-azul);
+    --bs-btn-active-border-color: var(--bib-azul);
+}
+.page-link { color: var(--bib-azul); }
+.page-item.active .page-link { background: var(--bib-azul); border-color: var(--bib-azul); }
+.text-bg-primary { background-color: var(--bib-azul) !important; }
+
+/* ---------- Menú lateral ---------- */
+.menu-lateral {
+    width: 260px;
+    flex: 0 0 260px;
+    background: #fff;
+    border-right: 1px solid var(--bib-borde);
+}
+@media (min-width: 992px) {
+    .menu-lateral {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        visibility: visible !important;
+    }
+}
+.marca {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1.25rem 1.25rem 1rem;
+    color: var(--bib-azul);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.1;
+}
+.marca i { font-size: 2rem; }
+.marca small { font-weight: 500; color: #6b7280; font-size: .8rem; }
+.menu-lateral .nav-link {
+    color: #374151;
+    border-radius: .6rem;
+    padding: .6rem .85rem;
+    display: flex;
+    gap: .65rem;
+    align-items: center;
+    margin-bottom: .1rem;
+}
+.menu-lateral .nav-link:hover { background: var(--bib-azul-claro); color: var(--bib-azul); }
+.menu-lateral .nav-link.active { background: var(--bib-azul); color: #fff; font-weight: 600; }
+.menu-grupo {
+    list-style: none;
+    padding: 1rem .85rem .35rem;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+/* ---------- Estructura ---------- */
+.contenido { min-width: 0; }
+.barra-superior {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem 1.25rem;
+    background: #fff;
+    border-bottom: 1px solid var(--bib-borde);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.titulo-seccion { font-weight: 700; }
+
+.card {
+    border: 1px solid var(--bib-borde);
+    border-radius: .85rem;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+}
+.card-header { background: #fff; font-weight: 600; border-bottom: 1px solid var(--bib-borde); border-radius: .85rem .85rem 0 0 !important; }
+
+/* ---------- Indicadores del panel ---------- */
+.indicador { text-decoration: none; color: inherit; display: block; height: 100%; transition: box-shadow .15s; }
+.indicador:hover { box-shadow: 0 4px 14px rgba(29, 78, 216, .15); }
+.indicador .icono {
+    width: 3rem; height: 3rem; border-radius: .8rem;
+    display: grid; place-items: center; font-size: 1.4rem;
+    background: var(--bib-azul-claro); color: var(--bib-azul);
+}
+.indicador .icono.verde { background: #e8f7ee; color: #15803d; }
+.indicador .icono.rojo { background: #fdecec; color: #b91c1c; }
+.indicador .icono.ambar { background: #fff5e0; color: #b45309; }
+.indicador .valor { font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+
+.acceso-directo {
+    display: flex; align-items: center; gap: .75rem; padding: .9rem 1rem;
+    border: 1px solid var(--bib-borde); border-radius: .85rem; background: #fff;
+    text-decoration: none; color: #1f2937; font-weight: 600;
+}
+.acceso-directo:hover { border-color: var(--bib-azul); color: var(--bib-azul); }
+.acceso-directo i { font-size: 1.4rem; color: var(--bib-azul); }
+
+/* ---------- Tablas y formularios ---------- */
+.table > :not(caption) > * > * { padding: .7rem .75rem; vertical-align: middle; }
+.table thead th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: #6b7280; background: #f9fafb; white-space: nowrap; }
+.estado-insignia { font-weight: 600; padding: .4em .65em; }
+.fila-vencida { background: #fff5f5; }
+.form-label { font-weight: 600; font-size: .9rem; }
+.requerido::after { content: " *"; color: #dc2626; }
+.col-acciones { white-space: nowrap; width: 1%; }
+.truncar { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- Autocompletar ---------- */
+.autocompletar-caja { position: relative; }
+.autocompletar-lista {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 50;
+    background: #fff; border: 1px solid var(--bib-borde); border-radius: .6rem;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, .12); max-height: 280px; overflow-y: auto;
+}
+.autocompletar-lista button {
+    display: block; width: 100%; text-align: left; border: 0; background: none;
+    padding: .55rem .85rem; border-bottom: 1px solid #f1f3f7;
+}
+.autocompletar-lista button:hover, .autocompletar-lista button.activo { background: var(--bib-azul-claro); }
+.autocompletar-lista small { color: #6b7280; display: block; }
+.autocompletar-aviso { padding: .6rem .85rem; color: #6b7280; font-size: .9rem; }
+.seleccion-ok { background: #e8f7ee; border-radius: .5rem; padding: .35rem .6rem; font-size: .9rem; }
+
+/* ---------- Login ---------- */
+.pagina-login {
+    min-height: 100vh; display: grid; place-items: center; padding: 1rem;
+    background: linear-gradient(135deg, #eaf0ff 0%, #f7f9fc 55%, #ffffff 100%);
+}
+.tarjeta-login { width: 100%; max-width: 420px; }
+.logo-login {
+    width: 4rem; height: 4rem; border-radius: 1rem; display: grid; place-items: center;
+    background: var(--bib-azul); color: #fff; font-size: 2rem; margin: 0 auto 1rem;
+}
+
+@media (max-width: 575.98px) {
+    .acciones-encabezado { width: 100%; }
+    .acciones-encabezado .btn { flex: 1; }
+}
