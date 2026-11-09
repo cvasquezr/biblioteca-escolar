@@ -73,7 +73,7 @@ function esAdministrador(): bool
 function intentarLogin(string $correo, string $password): ?string
 {
     $correo = mb_strtolower(trim($correo), 'UTF-8');
-    $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+    $ip = ipCliente();
 
     if (intentosFallidosRecientes($correo, $ip)) {
         return 'Demasiados intentos fallidos. Espere ' . MINUTOS_BLOQUEO . ' minutos e intente de nuevo.';

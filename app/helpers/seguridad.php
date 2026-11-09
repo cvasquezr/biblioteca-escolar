@@ -114,3 +114,19 @@ function longitud(string $texto): int
 {
     return mb_strlen($texto, 'UTF-8');
 }
+
+/**
+ * IP del cliente. Detrás de un proxy de confianza (TRUST_PROXY=true, por ejemplo en Render)
+ * se usa la última IP de X-Forwarded-For, que es la que añadió el proxy y no puede falsificar el cliente.
+ */
+function ipCliente(): string
+{
+    if (entorno('TRUST_PROXY', 'false') === 'true' && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $partes = array_map('trim', explode(',', (string) $_SERVER['HTTP_X_FORWARDED_FOR']));
+        $ip = end($partes);
+        if (filter_var($ip, FILTER_VALIDATE_IP)) {
+            return $ip;
+        }
+    }
+    return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+}

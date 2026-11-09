@@ -1,0 +1,54 @@
+# Despliegue de demostración en Render (plan gratuito).
+# Crea la aplicación (Docker) y una base PostgreSQL, y las conecta entre sí.
+# La app crea las tablas sola al arrancar (scripts/preparar.php).
+databases:
+  - name: biblioteca-db
+    plan: free
+    databaseName: biblioteca_escolar
+    user: biblioteca
+
+services:
+  - type: web
+    name: biblioteca-escolar
+    runtime: docker
+    plan: free
+    healthCheckPath: /login.php
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_TIMEZONE
+        value: America/Bogota
+      - key: PORT
+        value: "80"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: DB_HOST
+        fromDatabase:
+          name: biblioteca-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: biblioteca-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: biblioteca-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: biblioteca-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: biblioteca-db
+          property: password
+      # Primer administrador: la contraseña la genera Render (se ve en Environment del servicio)
+      - key: ADMIN_EMAIL
+        value: admin@demo.local
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      # Datos ficticios para la demostración (ponga "false" para empezar vacío)
+      - key: DEMO_DATA
+        value: "true"

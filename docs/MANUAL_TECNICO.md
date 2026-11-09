@@ -26,3 +26,8 @@ Repositorio local en la rama `main`. No hay remoto configurado y no se ha hecho 
 
 ## Cuenta de prueba local
 Durante el desarrollo se creó `admin@ejemplo.com` solo para la base local. **Cree su propio administrador y desactive esa cuenta** antes de usar el sistema en serio.
+
+## Despliegue en la nube (Render)
+`render.yaml` define el servicio web (Dockerfile) y una base PostgreSQL gratuita. Al arrancar, `scripts/preparar.php` espera a la base, aplica los scripts 01 y 02 (repetibles), crea el primer administrador si no existe ninguno (`ADMIN_EMAIL`/`ADMIN_PASSWORD`) y, si `DEMO_DATA=true` y la base está vacía, carga los datos de demostración.
+Variables relevantes: `DB_*`, `DB_SSLMODE` (p. ej. `require` si la base exige SSL), `TRUST_PROXY=true` (usa la IP real del cliente detrás del proxy para el límite de intentos), `APP_DEBUG=false`.
+El disco del contenedor es temporal: los Excel subidos a `database/import/` se pierden al reiniciar.

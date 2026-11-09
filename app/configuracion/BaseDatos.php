@@ -16,6 +16,10 @@ final class BaseDatos
                 entorno('DB_PORT', '5432'),
                 entorno('DB_DATABASE', 'biblioteca_escolar')
             );
+            // En servicios en la nube la base suele exigir SSL: DB_SSLMODE=require
+            if (($ssl = entorno('DB_SSLMODE')) !== null && $ssl !== '') {
+                $dsn .= ';sslmode=' . $ssl;
+            }
             self::$conexion = new PDO($dsn, entorno('DB_USERNAME', 'biblioteca'), entorno('DB_PASSWORD', ''), [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

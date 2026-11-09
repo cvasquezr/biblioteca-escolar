@@ -41,6 +41,18 @@ Historial · Informes (con CSV) · Importar inventario desde Excel · Cuentas de
 Los Excel están en `database/import/` (no se suben a Git). Menú **Importar inventario**: compare los
 dos archivos, revise el informe previo y confirme. Ver `docs/MANUAL_USUARIO.md`.
 
+## Demo en internet (Render, plan gratuito)
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/cvasquezr/biblioteca-escolar)
+
+1. Cree una cuenta en Render e inicie sesión con GitHub.
+2. Pulse el botón de arriba (usa `render.yaml`), elija el repositorio y pulse **Apply**.
+3. Espere unos minutos y abra la URL `https://biblioteca-escolar-xxxx.onrender.com`.
+4. Ingrese con `admin@demo.local`. La contraseña la genera Render: en el servicio *biblioteca-escolar* → **Environment** → `ADMIN_PASSWORD`.
+
+Las tablas se crean solas al arrancar (`scripts/preparar.php`) y se cargan datos ficticios (`DEMO_DATA=true`; póngalo en `false` para empezar vacío).
+Limitaciones del plan gratis: la app se duerme tras ~15 min sin visitas (la primera visita tarda 30–60 s en despertarla) y la base gratuita **se borra a los 30 días**. Es solo para demostración: no guarde datos reales.
+
 ## Documentación
 `docs/REQUERIMIENTOS.md`, `docs/ARQUITECTURA.md`, `docs/MODELO_DATOS.md`, `docs/MANUAL_USUARIO.md`,
 `docs/MANUAL_TECNICO.md`, `docs/PRUEBAS.md`, `database/sql/README_SQL.md`.

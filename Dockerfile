@@ -19,3 +19,6 @@ RUN mkdir -p /var/www/html/database/import \
     && chown -R www-data:www-data /var/www/html/database/import
 
 EXPOSE 80
+
+# Al arrancar: prepara la base de datos (idempotente) y luego inicia Apache
+CMD ["sh", "-c", "php /var/www/html/scripts/preparar.php; exec apache2-foreground"]
