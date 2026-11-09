@@ -1,0 +1,32 @@
+== Autenticación y permisos ==
+  [OK]    1. No se puede acceder al dashboard sin iniciar sesión
+  [OK]    2. El login funciona con credenciales correctas
+  [OK]    3. El login rechaza credenciales incorrectas (sin revelar si el correo existe)
+  [OK]    4. Una cuenta inactiva no puede ingresar
+  [OK]    5. Un bibliotecario no puede administrar cuentas (GET y POST)
+  [OK]    5b. Un POST sin token CSRF es rechazado
+  [OK]    5c. El cierre de sesión destruye la sesión
+  [OK]    5d. Se limita el número de intentos de inicio de sesión
+  [OK]    5e. Las contraseñas se guardan con hash (nunca en texto plano)
+== Libros y ejemplares ==
+  [OK]    6. Se puede crear, consultar, editar y desactivar un libro
+  [OK]    6b. Crear un libro por la interfaz web (con CSRF)
+  [OK]    7. No se puede registrar dos veces la misma identificación de lector
+  [OK]    8. Se pueden crear varios ejemplares para un título
+== Préstamos y devoluciones ==
+  [OK]    9. Se puede prestar un ejemplar disponible
+  [OK]    10. No se puede prestar un ejemplar que ya tiene un préstamo activo
+  [OK]    10b. La base de datos impide dos préstamos activos del mismo ejemplar (índice único parcial)
+  [OK]    11. No se puede prestar un ejemplar dañado, perdido o inactivo
+  [OK]    11b. Reglas del lector y de las fechas
+  [OK]    12. Se puede registrar una devolución y el ejemplar vuelve a estar disponible
+  [OK]    13. No se puede devolver dos veces el mismo préstamo
+  [OK]    13b. Devolver un libro dañado lo deja no disponible
+  [OK]    13c. No se desactiva un lector ni un libro con préstamos activos
+== Informes ==
+  [OK]    14. Los informes respetan los filtros de fechas
+  [OK]    14b. La exportación a CSV funciona y respeta los filtros
+== Importación de Excel ==
+  [OK]    15. La importación crea libros y ejemplares, y repetirla no duplica
+== Resumen ==
+  Correctas: 25   Fallidas: 0
