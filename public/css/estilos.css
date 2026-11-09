@@ -173,3 +173,6 @@ body {
     .acciones-encabezado { width: 100%; }
     .acciones-encabezado .btn { flex: 1; }
 }
+
+/* ---------- Barra de paginación ---------- */
+.paginacion-barra .salto-pagina { max-width: 5rem; }

@@ -26,6 +26,15 @@
         });
     }
 
+    // ---------- Paginación: cambiar filas por página reenvía el formulario desde la página 1 ----------
+    document.querySelectorAll('form[data-autoenviar] select').forEach(function (s) {
+        s.addEventListener('change', function () {
+            var salto = s.form.querySelector('input[name="pagina"]');
+            if (salto) { salto.disabled = true; }
+            s.form.submit();
+        });
+    });
+
     // ---------- Evitar doble envío ----------
     document.addEventListener('submit', function (evento) {
         var form = evento.target;

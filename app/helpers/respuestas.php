@@ -54,6 +54,11 @@ function abortarPagina(int $codigo, string $mensaje, ?string $detalle = null): n
 /** @return array{pagina:int, porPagina:int, paginas:int, total:int, desplazamiento:int} */
 function calcularPaginacion(int $total, int $porPagina = 15): array
 {
+    // El usuario puede elegir cuántas filas ver (solo valores permitidos)
+    $elegido = (int) ($_GET['por_pagina'] ?? 0);
+    if (in_array($elegido, OPCIONES_POR_PAGINA, true)) {
+        $porPagina = $elegido;
+    }
     $pagina = max(1, (int) ($_GET['pagina'] ?? 1));
     $paginas = max(1, (int) ceil($total / $porPagina));
     $pagina = min($pagina, $paginas);
@@ -63,6 +68,8 @@ function calcularPaginacion(int $total, int $porPagina = 15): array
         'paginas' => $paginas,
         'total' => $total,
         'desplazamiento' => ($pagina - 1) * $porPagina,
+        'desde' => $total === 0 ? 0 : ($pagina - 1) * $porPagina + 1,
+        'hasta' => min($total, $pagina * $porPagina),
     ];
 }
 
@@ -136,6 +143,7 @@ function insigniaPrestamo(array $p): string
     return insignia('Activo', 'primary', 'clock');
 }
 
+const OPCIONES_POR_PAGINA = [10, 15, 25, 50, 100];
 const TIPOS_USUARIO = ['estudiante' => 'Estudiante', 'docente' => 'Docente', 'administrativo' => 'Administrativo'];
 const ESTADOS_EJEMPLAR = ['disponible' => 'Disponible', 'danado' => 'Dañado', 'perdido' => 'Perdido', 'inactivo' => 'Inactivo'];
 const ROLES = ['administrador' => 'Administrador', 'bibliotecario' => 'Bibliotecario'];
