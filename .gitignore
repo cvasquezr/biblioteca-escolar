@@ -10,7 +10,7 @@ backups/
 *.log
 *.tmp
 # Entorno
-vendor/
+/vendor/
 .idea/
 .vscode/
 Thumbs.db
